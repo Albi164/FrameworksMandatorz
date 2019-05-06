@@ -12,7 +12,7 @@ class Question extends Component {
     async componentWillMount() {
         //await data.
         const response = await fetch(
-            `http://localhost:8080/questions2`
+            `https://mandatoryassigment.herokuapp.com/questions2`
         );
 
         //assign to const json and set state when we receive data
