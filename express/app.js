@@ -11,10 +11,16 @@ const port = (process.env.PORT || 8080);
 // Additional headers to avoid triggering CORS security errors in the browser
 // Read more: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-    res.header("https://mandatoryassigment.herokuapp.com/api");
+    res.header(
+        "Access-Control-Allow-Origin",
+        "https://frameworksmandatoryagustin.herokuapp.com/api"
+    );
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
     // intercepts OPTIONS method
     if ('OPTIONS' === req.method) {
