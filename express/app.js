@@ -22,16 +22,6 @@ app.use((req, res, next) => {
     next();
 });
 
-    // intercepts OPTIONS method
-    if ('OPTIONS' === req.method) {
-        // respond with 200
-        console.log("Allowing OPTIONS");
-        res.sendStatus(200);
-    } else {
-        // move on
-        next();
-    }
-});
 /****** Data *****/
 let mongoose = require('mongoose');
 mongoose.connect('mongodb://heroku_fw5mzzmh:9ct9vpssm13ldgko7t458h77t4@ds147946.mlab.com:47946/heroku_fw5mzzmh');
@@ -136,7 +126,7 @@ Questions.findOneAndUpdate({_id: newAnswer.originalPostId}, {$push:{'answers':{"
         }
         res.json(question);
     })
-})
+});
 app.put('/api/questions/:id/rating', (req, res) => {
     let newRating = req.body;
     let rankingIncrease = newRating.ranking+1;
@@ -147,7 +137,7 @@ app.put('/api/questions/:id/rating', (req, res) => {
         res.json(question);
     })
 
-})
+});
 
 app.put('/api/questions/:id', (req, res)=>{
     res.json(getQuestionFromId(req.params.id));
