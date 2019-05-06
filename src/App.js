@@ -4,9 +4,6 @@ import './index.css';
 import Question from "./Question";
 import QuestionList from "./QuestionList";
 import NotFound from "./NotFound";
-import AddQuestion from "./AddQuestion";
-import AddAnswer from "./AddAnswer";
-import axios from "axios";
 
 class App extends Component {
     constructor(props) {
@@ -26,7 +23,7 @@ class App extends Component {
     async componentWillMount() {
         //await data.
         const response = await fetch(
-            "/questions2"
+            "/api/questions2"
         );
 
         //assign to const json and set state when we receive data
@@ -35,7 +32,7 @@ class App extends Component {
     }
 
     postDataToDB(title, description){
-        fetch("/questions", {
+        fetch("/api/questions", {
             method:'post',
               body: JSON.stringify({
                     "title": title,
@@ -48,7 +45,7 @@ class App extends Component {
             //.then(response => response.json())
     }
     postAnswersToDB(text, id){
-        fetch("/questions/:id/answers",{
+        fetch("/api/questions/:id/answers",{
             method: 'put',
             body: JSON.stringify({
                 "originalPostId": id,
@@ -60,7 +57,7 @@ class App extends Component {
             // .then(response => response.json())
     }
     updateRating(ranking, id, originalPostId, text){
-        fetch('/questions/:id/rating', {
+        fetch('/api/questions/:id/rating', {
             method:'put',
             body:JSON.stringify({
                 "originalAnswerId": id,
@@ -71,28 +68,12 @@ class App extends Component {
             headers: new Headers({ "Content-Type": "application/json" }) // add headers
         })
 
-            // .then(response=> response.json())
-        //             // .then(response => console.log(response.json))
     }
-    // putDataToDB = (title,description) => {
-    //     let currentIds = this.state.questions.map(questions => questions.id);
-    //     let idToBeAdded = 0;
-    //     while (currentIds.includes(idToBeAdded)) {
-    //         ++idToBeAdded;
-    //     }
-    //
-    //     axios.post("http://localhost:8080/questions2", {
-    //         id: idToBeAdded,
-    //         title: title,
-    //         description: description
-    //     });
-    // };
 
-   
     async getQuestionFromId(id) {
                //await data.
                const response = await fetch(
-                "/questions2"
+                "/api/questions2"
             );
     
             //assign to const json and set state when we receive data
