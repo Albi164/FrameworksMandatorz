@@ -7,6 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 /****** Configuration *****/
 const port = (process.env.PORT || 8080);
+const path = require("path");
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('/api', function (req, res) {
     const index = path.join(__dirname, '../build', 'index.html');
