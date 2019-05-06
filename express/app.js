@@ -7,13 +7,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 /****** Configuration *****/
 const port = (process.env.PORT || 8080);
-
+app.use(express.static(path.join(__dirname, '../build')));
+app.get('/api', function (req, res) {
+    const index = path.join(__dirname, '../build', 'index.html');
+    res.sendFile(index);
+});
 // Additional headers to avoid triggering CORS security errors in the browser
 // Read more: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 app.use((req, res, next) => {
     res.header(
         "Access-Control-Allow-Origin",
-        "https://frameworksmandatoryagustin.herokuapp.com/api"
+        "https://mandatoryassigment.herokuapp.com/api"
     );
     res.header(
         "Access-Control-Allow-Headers",
@@ -41,36 +45,6 @@ let questionSchema = new mongoose.Schema ({
 
 let Questions = new mongoose.model('Questions', questionSchema);
 
-// const questions =[
-//     {
-//         title: "Starting with GitHub",
-//         description: "Hey guys, I'm very new in the internet, how do I start with github?",
-//         topic: "Github"
-//
-//     },
-//     {
-//         title: "Making Pacman in android",
-//         description: "Hey guys, I'm new in android, do you know any helpful tutorial?",
-//         topic:"Java"
-//     },
-//     {
-//         title: "How to set up Umbraco",
-//         description: "Does any of you have idea how to set up Umbraco CMS?",
-//         topic: "Umbraco"
-//     }
-// ];
-// questions.forEach((r)=>{
-//     let questions = new Questions({
-//         title: r.title,
-//         description: r.description,
-//         topic: r.topic,
-//         answers: r.answers
-//     })
-//     questions.save((err, questions)=>{
-//         if (err) return console.error(err);
-//     })
-// });
-
 
 /****** Helper functions *****/
 function getQuestionFromId(id) {
@@ -90,9 +64,6 @@ app.get('/api/questions2', (req, res) => {
     Questions.find((err, questions)=>{
         res.json(questions);
     });
-
-    const index = path.join(__dirname, '../build/index.html');
-    res.sendFile(index);
 });
 
 
