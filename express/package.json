@@ -1,0 +1,16 @@
+{
+  "name": "cooking_recipe_api",
+  "version": "1.0.0",
+  "description": "Simple API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd express && node app.js",
+    "preinstall": "cd express && npm install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
