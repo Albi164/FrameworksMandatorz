@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "preinstall": "cd express && npm install"
+    "preinstall": "cd ./express && npm install"
   },
   "homepage": "https://mandatoryassigment.herokuapp.com",
   "proxy": "https://mandatoryassigment.herokuapp.com",
