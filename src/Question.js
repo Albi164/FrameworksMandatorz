@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 import AddAnswer from "./AddAnswer";
-import props from "./App";
 
 class Question extends Component {
     constructor(props) {
@@ -12,7 +10,7 @@ class Question extends Component {
     async componentWillMount() {
         //await data.
         const response = await fetch(
-            `https://mandatoryassigment.herokuapp.com/api/questions/${this.props.questionsID}`
+            `/api/questions/${this.props.questionsID}`
         );
 
         //assign to const json and set state when we receive data
@@ -23,7 +21,7 @@ class Question extends Component {
     }
 
     render() {
-        console.log(this)
+        console.log(this);
 
         return (
             this.state.currentQuestion ? <div>
