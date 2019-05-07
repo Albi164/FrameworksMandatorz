@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import AddAnswer from "./AddAnswer";
+import props from "./App";
 
 class Question extends Component {
     constructor(props) {
@@ -10,7 +12,7 @@ class Question extends Component {
     async componentWillMount() {
         //await data.
         const response = await fetch(
-            `/api/questions/${this.props.questionsID}`
+            `/api/questions`
         );
 
         //assign to const json and set state when we receive data
@@ -21,8 +23,13 @@ class Question extends Component {
     }
 
     render() {
-        console.log(this);
-
+        console.log(this)
+        // const {title, description} = this.state.currentQuestion
+        //  this.state.questions.forEach((elm) => {
+        //     list.push(<li key={elm.id}>
+        //         <Link key={elm.id} to={`/questions/with/${elm.topic}`}>{elm.topic}</Link>
+        //     </li>)
+        // });
         return (
             this.state.currentQuestion ? <div>
                     <h3>{this.state.currentQuestion.title}</h3>
@@ -42,11 +49,11 @@ class Question extends Component {
                                 </li>
                             ))}
                     </ul>
-                <AddAnswer
-                    postAnswersToDB={this.props.postAnswersToDB} originalQuestionID={this.props.questionsID}
-                />
-                        </div>
-                    : null
+                    <AddAnswer
+                        postAnswersToDB={this.props.postAnswersToDB} originalQuestionID={this.props.questionsID}
+                    />
+                </div>
+                : null
         );
     }
 }
