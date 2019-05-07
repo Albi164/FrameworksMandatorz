@@ -24,12 +24,7 @@ class Question extends Component {
 
     render() {
         console.log(this)
-        // const {title, description} = this.state.currentQuestion
-        //  this.state.questions.forEach((elm) => {
-        //     list.push(<li key={elm.id}>
-        //         <Link key={elm.id} to={`/questions/with/${elm.topic}`}>{elm.topic}</Link>
-        //     </li>)
-        // });
+
         return (
             this.state.currentQuestion ? <div>
                     <h3>{this.state.currentQuestion.title}</h3>

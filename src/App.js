@@ -23,7 +23,7 @@ class App extends Component {
     async componentWillMount() {
         //await data.
         const response = await fetch(
-            "/api/questions2"
+            "/api/questions"
         );
 
         //assign to const json and set state when we receive data
@@ -73,7 +73,7 @@ class App extends Component {
     async getQuestionFromId(id) {
                //await data.
                const response = await fetch(
-                "/api/questions2"
+                "/api/questions"
             );
     
             //assign to const json and set state when we receive data

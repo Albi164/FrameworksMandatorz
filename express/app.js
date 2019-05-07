@@ -61,7 +61,7 @@ function findNextId() {
     return nextId;
 }
 
-app.get('/api/questions2', (req, res) => {
+app.get('/api/questions', (req, res) => {
     Questions.find((err, questions)=>{
         res.json(questions);
     });

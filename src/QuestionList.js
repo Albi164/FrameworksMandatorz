@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import AddQuestion from "./AddQuestion";
-import props from "./App";
 
 class QuestionsList extends Component {
 
